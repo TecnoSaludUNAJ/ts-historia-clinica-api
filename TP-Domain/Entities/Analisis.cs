@@ -8,7 +8,10 @@ namespace TP_Domain.Entities
    public class Analisis
     {
         [Key]
-        public int Id_Analisis { get; set; }
+        public int AnalisisId { get; set; }
         public string Descripcion { get; set; }
+
+        public Registro Registro { get; set; }
+
     }
 }

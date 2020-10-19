@@ -8,16 +8,20 @@ namespace TP_Domain.Entities
     public class Registro
     {
         [Key]
-        public int Id_Registro { get; set; }
-        public string Motivo_Consulta { get; set; }
-        public string Diagnostico { get; set; }
-        public int Id_Analisis { get; set; }
+        public int RegistroId { get; set; }
+        public string MotivoConsulta { get; set; }
+        public string Diagnostico { get; set; } 
+        public DateTime ProximaRevision { get; set; }
+
+
+        public List<Receta> RecetaNavigator { get; set; }
+
+        public int HistoriaClinicaId { get; set; }
+        public HistoriaClinica HistoriaClinica { get; set; }
+
+        public int AnalisisId { get; set; }
         public Analisis Analisis { get; set; }
-        public DateTime Proxima_Revision { get; set; }
-        public int Id_Receta { get; set; }
-        public Receta Receta { get; set; }
-        public int Id_Historia_Clinica { get; set; }
-        public Historia_Clinica Historia_Clinica { get; set; }
-        public int Especialista { get; set; }
+
+        public int EspecialistaId { get; set; }
     }
 }

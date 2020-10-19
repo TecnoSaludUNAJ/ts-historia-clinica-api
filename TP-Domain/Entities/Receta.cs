@@ -8,9 +8,10 @@ namespace TP_Domain.Entities
     public class Receta
     {
         [Key]
-        public string Id_Receta { get; set; }
-        public int Id_Registro { get; set; }
-        public Registro Registro { get; set; }
+        public string RecetaId { get; set; }
         public string Descripcion { get; set; }
+
+        public int RegistroId { get; set; }
+        public Registro Registro { get; set; }
     }
 }

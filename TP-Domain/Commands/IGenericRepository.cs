@@ -4,12 +4,10 @@ using TP_Domain.Entities;
 
 namespace TP_Domain.Commands
 {
-    public interface IGenericRepository<T> where T : BaseEntity
+    public interface IGenericsRepository
     {
-        IEnumerable<T> GetAll();
-        T GetById(Guid id);
-        void Add(T entity);
-        void Update(T entity);
-        void Delete(Guid id);
+        void Add<T>(T entity) where T : class;
+        void Update<T>(T entity) where T : class;
+        void Delete(int id);
     }
 }
