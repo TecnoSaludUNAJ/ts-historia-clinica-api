@@ -16,12 +16,12 @@ namespace TP_Domain.Entities
 
         public List<Receta> RecetaNavigator { get; set; }
 
-        public int HistoriaClinicaId { get; set; }
-        public HistoriaClinica HistoriaClinica { get; set; }
-
-        public int AnalisisId { get; set; }
-        public Analisis Analisis { get; set; }
+        public List<Analisis> AnalisisNavigator { get; set; }
 
         public int EspecialistaId { get; set; }
+
+        public HistoriaClinica HistoriaClinica { get; set; }
+        public int HistoriaClinicaId { get; set; }
+
     }
 }

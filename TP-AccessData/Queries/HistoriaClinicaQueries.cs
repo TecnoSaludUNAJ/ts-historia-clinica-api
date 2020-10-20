@@ -26,7 +26,11 @@ namespace TP_AccessData.Queries
 
             var hhcc = db.Query("HistoriaClinica")
                 .SelectRaw("*")
-                .Where("PacienteId", "=", pacienteid).FirstOrDefault<HistoriaClinicaResponseDto>();
+                .Where("PacienteId", "=", pacienteid)
+                
+                //irian los joins aca
+                
+                .FirstOrDefault<HistoriaClinicaResponseDto>();
 
             if (hhcc != null)
             {

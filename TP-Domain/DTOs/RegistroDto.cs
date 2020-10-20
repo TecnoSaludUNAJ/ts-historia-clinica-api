@@ -4,15 +4,13 @@ using System.Text;
 
 namespace TP_Domain.DTOs
 {
-    public class HistoriaClinicaResponseDto
+    public class RegistroDto
     {
-        public int HistoriaClinicaId { get; set; }
-        public int PacienteId { get; set; }
-
-        public string AnalisisDescripcion { get; set; }
-        public string RecetaDescripcion { get; set; }
         public string MotivoConsulta { get; set; }
         public string Diagnostico { get; set; }
         public DateTime ProximaRevision { get; set; }
+        public int EspecialistaId { get; set; }
+        public int HistoriaClinicaId { get; set; }
+
     }
 }

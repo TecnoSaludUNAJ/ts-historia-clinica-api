@@ -12,6 +12,10 @@ namespace TP_Domain.Entities
         public string Descripcion { get; set; }
 
         public Registro Registro { get; set; }
+        public int RegistroId { get; set; }
+
+
+        
 
     }
 }

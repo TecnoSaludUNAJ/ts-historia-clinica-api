@@ -10,8 +10,8 @@ using TP_AccessData;
 namespace TP_AccessData.Migrations
 {
     [DbContext(typeof(TemplateDbContext))]
-    [Migration("20201019200525_ms-hhcc")]
-    partial class mshhcc
+    [Migration("20201020003209_ms-hhccDB")]
+    partial class mshhccDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,7 +31,12 @@ namespace TP_AccessData.Migrations
                     b.Property<string>("Descripcion")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("RegistroId")
+                        .HasColumnType("int");
+
                     b.HasKey("AnalisisId");
+
+                    b.HasIndex("RegistroId");
 
                     b.ToTable("Analisis");
                 });
@@ -76,9 +81,6 @@ namespace TP_AccessData.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AnalisisId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Diagnostico")
                         .HasColumnType("nvarchar(max)");
 
@@ -96,12 +98,18 @@ namespace TP_AccessData.Migrations
 
                     b.HasKey("RegistroId");
 
-                    b.HasIndex("AnalisisId")
-                        .IsUnique();
-
                     b.HasIndex("HistoriaClinicaId");
 
                     b.ToTable("Registro");
+                });
+
+            modelBuilder.Entity("TP_Domain.Entities.Analisis", b =>
+                {
+                    b.HasOne("TP_Domain.Entities.Registro", "Registro")
+                        .WithMany("AnalisisNavigator")
+                        .HasForeignKey("RegistroId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TP_Domain.Entities.Receta", b =>
@@ -115,12 +123,6 @@ namespace TP_AccessData.Migrations
 
             modelBuilder.Entity("TP_Domain.Entities.Registro", b =>
                 {
-                    b.HasOne("TP_Domain.Entities.Analisis", "Analisis")
-                        .WithOne("Registro")
-                        .HasForeignKey("TP_Domain.Entities.Registro", "AnalisisId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("TP_Domain.Entities.HistoriaClinica", "HistoriaClinica")
                         .WithMany("RegistroNavigator")
                         .HasForeignKey("HistoriaClinicaId")

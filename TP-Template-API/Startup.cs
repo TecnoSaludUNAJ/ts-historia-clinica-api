@@ -52,12 +52,13 @@ namespace TP_Template_API
 
             //Injection dependences
             services.AddTransient<IGenericsRepository, GenericsRepository>();
-            services.AddTransient<IHistoriaClinicaQueries, HistoriaClinicaQueries>();
             services.AddTransient<IAnalisisService, AnalisisService>();
             services.AddTransient<IRegistroService, RegistroService>();
             services.AddTransient<IRecetaService, RecetaService>();
             services.AddTransient<IHistoriaClinicaService, HistoriaClinicaService>();
-            
+            services.AddTransient<IHistoriaClinicaQueries, HistoriaClinicaQueries>();
+            services.AddTransient<IRegistroQueries, RegistroQueries>();
+
             services.AddCors(c =>
             {
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
@@ -76,6 +77,7 @@ namespace TP_Template_API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthorization();
 

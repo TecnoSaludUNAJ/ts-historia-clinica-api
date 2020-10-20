@@ -12,7 +12,8 @@ namespace TP_Domain.Entities
 
         public int PacienteId { get; set; }
 
-        
+
         public List<Registro> RegistroNavigator { get; set; }
+
     }
 }

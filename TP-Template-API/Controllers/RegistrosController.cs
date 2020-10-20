@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TP_AccessData;
+using TP_Application.Services;
+using TP_Domain.DTOs;
 using TP_Domain.Entities;
 
 namespace TP_Template_API.Controllers
@@ -14,97 +16,26 @@ namespace TP_Template_API.Controllers
     [ApiController]
     public class RegistrosController : ControllerBase
     {
-        private readonly TemplateDbContext _context;
+        private readonly IRegistroService _service;
 
-        public RegistrosController(TemplateDbContext context)
+        public RegistrosController(IRegistroService service)
         {
-            _context = context;
+            _service = service;
         }
 
-        // GET: api/Registros
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Registro>>> GetRegistros()
+        [HttpPost]
+        public IActionResult Post(RegistroDto registro)
         {
-            return await _context.Registros.ToListAsync();
-        }
-
-        // GET: api/Registros/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Registro>> GetRegistro(int id)
-        {
-            var registro = await _context.Registros.FindAsync(id);
-
-            if (registro == null)
-            {
-                return NotFound();
-            }
-
-            return registro;
-        }
-
-        // PUT: api/Registros/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutRegistro(int id, Registro registro)
-        {
-            if (id != registro.RegistroId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(registro).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                return new JsonResult(_service.CreateRegistro(registro)) { StatusCode = 201 };
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception e)
             {
-                if (!RegistroExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest(e.Message);
             }
-
-            return NoContent();
         }
 
-        // POST: api/Registros
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<Registro>> PostRegistro(Registro registro)
-        {
-            _context.Registros.Add(registro);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetRegistro", new { id = registro.RegistroId }, registro);
-        }
-
-        // DELETE: api/Registros/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Registro>> DeleteRegistro(int id)
-        {
-            var registro = await _context.Registros.FindAsync(id);
-            if (registro == null)
-            {
-                return NotFound();
-            }
-
-            _context.Registros.Remove(registro);
-            await _context.SaveChangesAsync();
-
-            return registro;
-        }
-
-        private bool RegistroExists(int id)
-        {
-            return _context.Registros.Any(e => e.RegistroId == id);
-        }
     }
+
 }

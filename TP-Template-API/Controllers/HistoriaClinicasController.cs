@@ -55,10 +55,4 @@ namespace TP_Template_API.Controllers
 
     }
 
-
-
-
-
-
-
 }
