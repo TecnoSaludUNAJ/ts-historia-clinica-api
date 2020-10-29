@@ -1,25 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using TP_AccessData;
 using SqlKata.Compilers;
-using TP_Domain.Commands;
+using System.Data;
+using TP_AccessData;
 using TP_AccessData.Commands;
-using TP_Domain.Queries;
-using TP_Application.Services;
 using TP_AccessData.Queries;
+using TP_Application.Services;
+using TP_Domain.Commands;
+using TP_Domain.Queries;
 
 namespace TP_Template_API
 {

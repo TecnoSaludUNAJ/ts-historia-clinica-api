@@ -42,8 +42,5 @@ namespace TP_Application.Services
                 HistoriaClinicaId = entity.HistoriaClinicaId
             };
         }
-
-        
-
     }
 }

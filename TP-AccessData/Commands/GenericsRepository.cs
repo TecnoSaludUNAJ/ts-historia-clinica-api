@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using TP_Domain.Commands;
-using TP_Domain.Entities;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
 
 namespace TP_AccessData.Commands
 {

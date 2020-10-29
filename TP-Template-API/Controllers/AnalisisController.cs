@@ -7,21 +7,22 @@ namespace TP_Template_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RegistrosController : ControllerBase
+    public class AnalisisController : ControllerBase
     {
-        private readonly IRegistroService _service;
+        private readonly IAnalisisService _service;
 
-        public RegistrosController(IRegistroService service)
+        public AnalisisController(IAnalisisService service)
         {
             _service = service;
         }
 
+
         [HttpPost]
-        public IActionResult Post(RegistroDto registro)
+        public IActionResult Post(AnalisisDto analisis)
         {
             try
             {
-                return new JsonResult(_service.CreateRegistro(registro)) { StatusCode = 201 };
+                return new JsonResult(_service.CreateAnalisis(analisis)) { StatusCode = 201 };
             }
             catch (Exception e)
             {

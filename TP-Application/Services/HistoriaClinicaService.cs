@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using TP_Domain.Commands;
+﻿using TP_Domain.Commands;
 using TP_Domain.DTOs;
 using TP_Domain.Entities;
 using TP_Domain.Queries;
@@ -18,7 +17,7 @@ namespace TP_Application.Services
         private readonly IGenericsRepository _repository;
         private readonly IHistoriaClinicaQueries _query;
 
-       public HistoriaClinicaService(IGenericsRepository repository, IHistoriaClinicaQueries query)
+        public HistoriaClinicaService(IGenericsRepository repository, IHistoriaClinicaQueries query)
         {
             _repository = repository;
             _query = query;
@@ -28,14 +27,14 @@ namespace TP_Application.Services
         {
             var entity = new HistoriaClinica
             {
-               PacienteId= historiaclinica.PacienteId
+                PacienteId = historiaclinica.PacienteId
             };
             _repository.Add<HistoriaClinica>(entity);
 
             return new HistoriaClinicaResponseDto
             {
-                HistoriaClinicaId=entity.HistoriaClinicaId,
-                PacienteId=entity.PacienteId
+                HistoriaClinicaId = entity.HistoriaClinicaId,
+                PacienteId = entity.PacienteId
             };
         }
 

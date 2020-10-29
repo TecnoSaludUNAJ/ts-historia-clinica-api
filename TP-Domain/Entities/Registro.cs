@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace TP_Domain.Entities
 {
@@ -10,7 +9,7 @@ namespace TP_Domain.Entities
         [Key]
         public int RegistroId { get; set; }
         public string MotivoConsulta { get; set; }
-        public string Diagnostico { get; set; } 
+        public string Diagnostico { get; set; }
         public DateTime ProximaRevision { get; set; }
 
 

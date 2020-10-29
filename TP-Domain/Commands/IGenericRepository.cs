@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using TP_Domain.Entities;
-
 namespace TP_Domain.Commands
 {
     public interface IGenericsRepository

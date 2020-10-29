@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using TP_AccessData;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using TP_Application.Services;
 using TP_Domain.DTOs;
-using TP_Domain.Entities;
 
 namespace TP_Template_API.Controllers
 {

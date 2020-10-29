@@ -1,11 +1,8 @@
-﻿ using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace TP_Domain.Entities
 {
-   public class Analisis
+    public class Analisis
     {
         [Key]
         public int AnalisisId { get; set; }
@@ -15,7 +12,7 @@ namespace TP_Domain.Entities
         public int RegistroId { get; set; }
 
 
-        
+
 
     }
 }
