@@ -49,7 +49,7 @@ namespace TP_AccessData.Migrations
                 {
                     AnalisisId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Descripcion = table.Column<string>(nullable: true),
+                    DescripcionAnalisis = table.Column<string>(nullable: true),
                     RegistroId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -68,7 +68,7 @@ namespace TP_AccessData.Migrations
                 columns: table => new
                 {
                     RecetaId = table.Column<string>(nullable: false),
-                    Descripcion = table.Column<string>(nullable: true),
+                    DescripcionReceta = table.Column<string>(nullable: true),
                     RegistroId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

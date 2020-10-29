@@ -26,7 +26,7 @@ namespace TP_AccessData.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Descripcion")
+                    b.Property<string>("DescripcionAnalisis")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("RegistroId")
@@ -59,7 +59,7 @@ namespace TP_AccessData.Migrations
                     b.Property<string>("RecetaId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Descripcion")
+                    b.Property<string>("DescripcionReceta")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("RegistroId")

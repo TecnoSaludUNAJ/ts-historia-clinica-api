@@ -10,7 +10,7 @@ using TP_AccessData;
 namespace TP_AccessData.Migrations
 {
     [DbContext(typeof(TemplateDbContext))]
-    [Migration("20201020003209_ms-hhccDB")]
+    [Migration("20201029201129_ms-hhccDB")]
     partial class mshhccDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,7 +28,7 @@ namespace TP_AccessData.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Descripcion")
+                    b.Property<string>("DescripcionAnalisis")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("RegistroId")
@@ -61,7 +61,7 @@ namespace TP_AccessData.Migrations
                     b.Property<string>("RecetaId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Descripcion")
+                    b.Property<string>("DescripcionReceta")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("RegistroId")

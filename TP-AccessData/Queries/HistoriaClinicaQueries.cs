@@ -25,12 +25,21 @@ namespace TP_AccessData.Queries
             var db = new QueryFactory(connection, sqlKataCompiler);
 
             var hhcc = db.Query("HistoriaClinica")
-                .SelectRaw("*")
-                .Where("PacienteId", "=", pacienteid)
-                
-                //irian los joins aca
-                
+                .SelectRaw(@"
+                HistoriaClinica.HistoriaClinicaId,
+                HistoriaClinica.PacienteId,
+                Receta.DescripcionReceta,
+                Registro.MotivoConsulta,
+                Analisis.DescripcionAnalisis,
+                Registro.Diagnostico,
+                Registro.ProximaRevision
+                     ")
+                .Join("Registro","HistoriaClinica.HistoriaClinicaId","Registro.HistoriaClinicaId","=","inner join")
+                .Join("Receta","Receta.RegistroId","Registro.RegistroId","=")
+                .Join("Analisis","Analisis.RegistroId","Registro.RegistroId","=")
+                .Where("HistoriaClinica.PacienteId","=",pacienteid)   
                 .FirstOrDefault<HistoriaClinicaResponseDto>();
+
 
             if (hhcc != null)
             {
