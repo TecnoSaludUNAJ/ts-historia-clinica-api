@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TP_AccessData.Migrations
 {
@@ -67,7 +67,8 @@ namespace TP_AccessData.Migrations
                 name: "Receta",
                 columns: table => new
                 {
-                    RecetaId = table.Column<string>(nullable: false),
+                    RecetaId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     DescripcionReceta = table.Column<string>(nullable: true),
                     RegistroId = table.Column<int>(nullable: false)
                 },

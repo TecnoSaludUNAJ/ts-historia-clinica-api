@@ -56,8 +56,10 @@ namespace TP_AccessData.Migrations
 
             modelBuilder.Entity("TP_Domain.Entities.Receta", b =>
                 {
-                    b.Property<string>("RecetaId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("RecetaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("DescripcionReceta")
                         .HasColumnType("nvarchar(max)");
