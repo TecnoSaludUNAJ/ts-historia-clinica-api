@@ -1,4 +1,5 @@
-﻿using TP_Domain.Commands;
+﻿using System.Collections.Generic;
+using TP_Domain.Commands;
 using TP_Domain.DTOs;
 using TP_Domain.Entities;
 using TP_Domain.Queries;
@@ -8,7 +9,7 @@ namespace TP_Application.Services
     public interface IHistoriaClinicaService
     {
         HistoriaClinicaResponseDto CreateHistoriaClinica(HistoriaClinicaDto historiaclinica);
-        HistoriaClinicaResponseDto GetByPacienteId(int pacienteid);
+       List<HistoriaClinicaResponseDto>  GetHistoriaClinica(int pacienteid);
 
     }
 
@@ -38,9 +39,9 @@ namespace TP_Application.Services
             };
         }
 
-        public HistoriaClinicaResponseDto GetByPacienteId(int pacienteid)
+        public List<HistoriaClinicaResponseDto> GetHistoriaClinica(int pacienteid)
         {
-            return _query.GetByPacienteid(pacienteid);
+            return _query.Get(pacienteid);
         }
     }
 

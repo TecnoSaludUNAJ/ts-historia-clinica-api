@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using TP_Application.Services;
 using TP_Domain.DTOs;
 
@@ -20,17 +21,19 @@ namespace TP_Template_API.Controllers
         [HttpGet]
         public IActionResult GetByPacienteId(int pacienteid)
         {
-
-            HistoriaClinicaResponseDto hhcc = _service.GetByPacienteId(pacienteid);
-            if (hhcc != null)
+            try
             {
-                return new JsonResult(hhcc) { StatusCode = 200 };
+                List<HistoriaClinicaResponseDto> hhcc = _service.GetHistoriaClinica(pacienteid);
+                if (hhcc != null)
+                {
+                    return new JsonResult(hhcc) { StatusCode = 200 };
+                }
+                else throw new Exception();
             }
-            else
+            catch
             {
-                return BadRequest();
-            }
-
+                return NotFound();
+            }               
         }
 
         [HttpPost]
