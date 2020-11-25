@@ -12,5 +12,6 @@ namespace TP_Domain.DTOs
         public string MotivoConsulta { get; set; }
         public string Diagnostico { get; set; }
         public DateTime ProximaRevision { get; set; }
+        public DateTime FechaRegistro { get; set; }
     }
 }

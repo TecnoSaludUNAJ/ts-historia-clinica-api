@@ -11,7 +11,7 @@ namespace TP_Domain.Entities
         public string MotivoConsulta { get; set; }
         public string Diagnostico { get; set; }
         public DateTime ProximaRevision { get; set; }
-
+        public DateTime FechaRegistro { get; set; }
 
         public List<Receta> RecetaNavigator { get; set; }
 

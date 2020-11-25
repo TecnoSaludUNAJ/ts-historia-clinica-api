@@ -87,6 +87,9 @@ namespace TP_AccessData.Migrations
                     b.Property<int>("EspecialistaId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("HistoriaClinicaId")
                         .HasColumnType("int");
 

@@ -33,7 +33,8 @@ namespace TP_AccessData.Queries
                 Registro.MotivoConsulta,
                 Analisis.DescripcionAnalisis,
                 Registro.Diagnostico,
-                Registro.ProximaRevision
+                Registro.ProximaRevision,
+                Registro.FechaRegistro
                      ")
             .Join("Registro", "HistoriaClinica.HistoriaClinicaId", "Registro.HistoriaClinicaId", "=", "inner join")
             .Join("Receta", "Receta.RegistroId", "Registro.RegistroId", "=")
@@ -54,7 +55,8 @@ namespace TP_AccessData.Queries
                 Registro.MotivoConsulta,
                 Analisis.DescripcionAnalisis,
                 Registro.Diagnostico,
-                Registro.ProximaRevision
+                Registro.ProximaRevision,
+                Registro.FechaRegistro
                      ")
             .Join("Registro", "HistoriaClinica.HistoriaClinicaId", "Registro.HistoriaClinicaId", "=", "inner join")
             .Join("Receta", "Receta.RegistroId", "Registro.RegistroId", "=")

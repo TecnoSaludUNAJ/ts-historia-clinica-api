@@ -1,4 +1,5 @@
-﻿using TP_Domain.Commands;
+﻿using System;
+using TP_Domain.Commands;
 using TP_Domain.DTOs;
 using TP_Domain.Entities;
 using TP_Domain.Queries;
@@ -23,13 +24,18 @@ namespace TP_Application.Services
 
         public RegistroDto CreateRegistro(RegistroDto registro)
         {
+
+
             var entity = new Registro
             {
                 MotivoConsulta = registro.MotivoConsulta,
                 Diagnostico = registro.Diagnostico,
                 ProximaRevision = registro.ProximaRevision,
                 EspecialistaId = registro.EspecialistaId,
-                HistoriaClinicaId = registro.HistoriaClinicaId
+                HistoriaClinicaId = registro.HistoriaClinicaId,
+                FechaRegistro = DateTime.Now
+               
+                
             };
             _repository.Add<Registro>(entity);
 

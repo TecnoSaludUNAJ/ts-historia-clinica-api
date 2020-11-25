@@ -29,6 +29,7 @@ namespace TP_AccessData.Migrations
                     MotivoConsulta = table.Column<string>(nullable: true),
                     Diagnostico = table.Column<string>(nullable: true),
                     ProximaRevision = table.Column<DateTime>(nullable: false),
+                    FechaRegistro = table.Column<DateTime>(nullable: false),
                     EspecialistaId = table.Column<int>(nullable: false),
                     HistoriaClinicaId = table.Column<int>(nullable: false)
                 },
