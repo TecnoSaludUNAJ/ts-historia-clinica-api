@@ -50,7 +50,7 @@ namespace TP_Template_API
             services.AddTransient<IRecetaService, RecetaService>();
             services.AddTransient<IHistoriaClinicaService, HistoriaClinicaService>();
             services.AddTransient<IHistoriaClinicaQueries, HistoriaClinicaQueries>();
-            services.AddTransient<IRegistroQueries, RegistroQueries>();
+
 
             services.AddCors(c =>
             {

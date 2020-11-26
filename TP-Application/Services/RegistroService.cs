@@ -14,17 +14,17 @@ namespace TP_Application.Services
     public class RegistroService : IRegistroService
     {
         private readonly IGenericsRepository _repository;
-        private readonly IRegistroQueries _query;
 
-        public RegistroService(IGenericsRepository repository, IRegistroQueries query)
+
+        public RegistroService(IGenericsRepository repository)
         {
             _repository = repository;
-            _query = query;
+            
         }
 
         public RegistroDto CreateRegistro(RegistroDto registro)
         {
-
+            DateTime fechaconsulta = DateTime.Now;
 
             var entity = new Registro
             {
@@ -33,9 +33,9 @@ namespace TP_Application.Services
                 ProximaRevision = registro.ProximaRevision,
                 EspecialistaId = registro.EspecialistaId,
                 HistoriaClinicaId = registro.HistoriaClinicaId,
-                FechaRegistro = DateTime.Now
-               
-                
+                FechaRegistro = fechaconsulta
+
+
             };
             _repository.Add<Registro>(entity);
 
