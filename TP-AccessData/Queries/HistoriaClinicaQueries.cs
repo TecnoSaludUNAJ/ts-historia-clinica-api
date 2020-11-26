@@ -26,7 +26,15 @@ namespace TP_AccessData.Queries
             if (pacienteid != 0)
             {
                 var query = db.Query("HistoriaClinica")
-            .SelectRaw("*")
+            .SelectRaw(@"
+                    HistoriaClinica.HistoriaClinicaId,
+                    HistoriaClinica.PacienteId,
+                    Receta.DescripcionReceta,
+                    Registro.MotivoConsulta,
+                    Analisis.DescripcionAnalisis,
+                    Registro.Diagnostico,
+                    Registro.ProximaRevision,
+                    Registro.FechaRegistro")
             .Join("Registro", "HistoriaClinica.HistoriaClinicaId", "Registro.HistoriaClinicaId", "=", "inner join")
             .Join("Receta", "Receta.RegistroId", "Registro.RegistroId", "=")
             .Join("Analisis", "Analisis.RegistroId", "Registro.RegistroId", "=")
@@ -37,7 +45,14 @@ namespace TP_AccessData.Queries
                 if (result.Count()==0)
                 {
                     query= db.Query("HistoriaClinica")
-                    .SelectRaw("*")
+                    .SelectRaw(@"
+                    HistoriaClinica.HistoriaClinicaId,                    
+                    HistoriaClinica.PacienteId,
+                    Registro.MotivoConsulta,
+                    Registro.Diagnostico,
+                    Registro.ProximaRevision,
+                    Registro.FechaRegistro")
+                    .Join("Registro", "HistoriaClinica.HistoriaClinicaId", "Registro.HistoriaClinicaId", "=", "inner join")
                     .Where("HistoriaClinica.PacienteId", "=", pacienteid);
                     result = query.Get<HistoriaClinicaResponseDto>();
                     return result.ToList();
