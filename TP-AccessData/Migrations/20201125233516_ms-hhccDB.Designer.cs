@@ -10,7 +10,7 @@ using TP_AccessData;
 namespace TP_AccessData.Migrations
 {
     [DbContext(typeof(TemplateDbContext))]
-    [Migration("20201029205000_ms-hhccDB")]
+    [Migration("20201125233516_ms-hhccDB")]
     partial class mshhccDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -88,6 +88,9 @@ namespace TP_AccessData.Migrations
 
                     b.Property<int>("EspecialistaId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("HistoriaClinicaId")
                         .HasColumnType("int");
