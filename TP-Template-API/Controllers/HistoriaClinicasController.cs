@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using TP_Application.Services;
@@ -19,6 +20,7 @@ namespace TP_Template_API.Controllers
 
         // GET: api/HistoriaClinicas
         [HttpGet]
+        [Authorize]
         public IActionResult GetByPacienteId(int pacienteid)
         {
             try
@@ -37,6 +39,7 @@ namespace TP_Template_API.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Post(HistoriaClinicaDto historiaclinica)
         {
             try

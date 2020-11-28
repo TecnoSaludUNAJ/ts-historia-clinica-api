@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using TP_Application.Services;
 using TP_Domain.DTOs;
@@ -17,6 +18,7 @@ namespace TP_Template_API.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Post(RegistroDto registro)
         {
             try
