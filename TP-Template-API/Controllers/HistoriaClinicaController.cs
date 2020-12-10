@@ -9,23 +9,23 @@ namespace TP_Template_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HistoriaClinicasController : ControllerBase
+    public class HistoriaClinicaController : ControllerBase
     {
         private readonly IHistoriaClinicaService _service;
 
-        public HistoriaClinicasController(IHistoriaClinicaService service)
+        public HistoriaClinicaController(IHistoriaClinicaService service)
         {
             _service = service;
         }
 
         // GET: api/HistoriaClinicas
-        [HttpGet]
+        [HttpGet("{PacienteId?}")]
         [Authorize]
-        public IActionResult GetByPacienteId(int pacienteid)
+        public IActionResult GetByPacienteId(int PacienteId)
         {
             try
             {
-                List<HistoriaClinicaResponseDto> hhcc = _service.GetHistoriaClinica(pacienteid);
+                List<HistoriaClinicaResponseDto> hhcc = _service.GetHistoriaClinica(PacienteId);
                 if (hhcc != null)
                 {
                     return new JsonResult(hhcc) { StatusCode = 200 };
@@ -37,21 +37,6 @@ namespace TP_Template_API.Controllers
                 return NotFound();
             }               
         }
-
-        [HttpPost]
-        [Authorize]
-        public IActionResult Post(HistoriaClinicaDto historiaclinica)
-        {
-            try
-            {
-                return new JsonResult(_service.CreateHistoriaClinica(historiaclinica)) { StatusCode = 201 };
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
-
     }
 
 }

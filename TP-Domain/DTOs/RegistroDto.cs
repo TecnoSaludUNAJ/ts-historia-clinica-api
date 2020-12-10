@@ -2,14 +2,15 @@
 
 namespace TP_Domain.DTOs
 {
-    public class RegistroDto
+    public class RegistroDTO
     {
-        public string MotivoConsulta { get; set; }
-        public string Diagnostico { get; set; }
-        public DateTime ProximaRevision { get; set; }
-
         public int EspecialistaId { get; set; }
-        public int HistoriaClinicaId { get; set; }
-
+        public string MotivoConsulta { get; set; }
+        public DateTime ProximaRevision { get; set; }
+        public DateTime FechaRegistro { get; set; }
+        public string Diagnostico { get; set; }
+        public string Analisis { get; set; }
+        public string Receta { get; set; }
+        public int pacienteId { get; set; }
     }
 }

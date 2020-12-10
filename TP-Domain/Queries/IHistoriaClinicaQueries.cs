@@ -5,6 +5,6 @@ namespace TP_Domain.Queries
 {
     public interface IHistoriaClinicaQueries
     {
-      List<HistoriaClinicaResponseDto> Get(int pacienteid);
+      List<HistoriaClinicaResponseDto> GetByPacienteId(int pacienteid);
     }
 }

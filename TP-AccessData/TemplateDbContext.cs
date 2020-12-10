@@ -10,19 +10,7 @@ namespace TP_AccessData
         {
         }
 
-        public DbSet<Analisis> AnalisisList { get; set; }
-        public DbSet<HistoriaClinica> HistoriaClinicaList { get; set; }
-        public DbSet<Receta> Recetas { get; set; }
+        public DbSet<HistoriaClinica> HistoriaClinica { get; set; }
         public DbSet<Registro> Registros { get; set; }
-
-
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            foreach (IMutableEntityType entityType in builder.Model.GetEntityTypes())
-            {
-                entityType.SetTableName(entityType.DisplayName());
-            }
-
-        }
     }
 }

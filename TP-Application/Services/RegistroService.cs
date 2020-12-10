@@ -8,7 +8,7 @@ namespace TP_Application.Services
 {
     public interface IRegistroService
     {
-        RegistroDto CreateRegistro(RegistroDto registro);
+        Registro CreateRegistro(RegistroDTO registro);
     }
 
     public class RegistroService : IRegistroService
@@ -22,31 +22,29 @@ namespace TP_Application.Services
             
         }
 
-        public RegistroDto CreateRegistro(RegistroDto registro)
+        public Registro CreateRegistro(RegistroDTO registro)
         {
             DateTime fechaconsulta = DateTime.Now;
 
             var entity = new Registro
             {
-                MotivoConsulta = registro.MotivoConsulta,
+                Analisis = registro.Analisis,
                 Diagnostico = registro.Diagnostico,
-                ProximaRevision = registro.ProximaRevision,
                 EspecialistaId = registro.EspecialistaId,
-                HistoriaClinicaId = registro.HistoriaClinicaId,
-                FechaRegistro = fechaconsulta
-
-
+                FechaRegistro = DateTime.Now,
+                MotivoConsulta = registro.MotivoConsulta,
+                ProximaRevision = registro.ProximaRevision,
+                Receta = registro.Receta,
             };
             _repository.Add<Registro>(entity);
-
-            return new RegistroDto
+            // add HC
+            var hc = new HistoriaClinica
             {
-                MotivoConsulta = entity.MotivoConsulta,
-                Diagnostico = entity.Diagnostico,
-                ProximaRevision = entity.ProximaRevision,
-                EspecialistaId = entity.EspecialistaId,
-                HistoriaClinicaId = entity.HistoriaClinicaId
+                PacienteId = registro.pacienteId,
+                RegistroId = entity.RegistroId
             };
+            _repository.Add<HistoriaClinica>(hc);
+            return entity;
         }
     }
 }

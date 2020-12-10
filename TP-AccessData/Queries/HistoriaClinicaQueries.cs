@@ -19,68 +19,17 @@ namespace TP_AccessData.Queries
             this.sqlKataCompiler = sqlKataCompiler;
         }
 
-        public List<HistoriaClinicaResponseDto> Get(int pacienteid)
+        public List<HistoriaClinicaResponseDto> GetByPacienteId(int pacienteid)
         {
             var db = new QueryFactory(connection, sqlKataCompiler);
 
-            if (pacienteid != 0)
-            {
-                var query = db.Query("HistoriaClinica")
-            .SelectRaw(@"
-                    HistoriaClinica.HistoriaClinicaId,
-                    HistoriaClinica.PacienteId,
-                    Receta.DescripcionReceta,
-                    Registro.MotivoConsulta,
-                    Analisis.DescripcionAnalisis,
-                    Registro.Diagnostico,
-                    Registro.ProximaRevision,
-                    Registro.FechaRegistro")
-            .Join("Registro", "HistoriaClinica.HistoriaClinicaId", "Registro.HistoriaClinicaId", "=", "inner join")
-            .Join("Receta", "Receta.RegistroId", "Registro.RegistroId", "=")
-            .Join("Analisis", "Analisis.RegistroId", "Registro.RegistroId", "=")
+            var query = db.Query("HistoriaClinica")
+            .Join("Registros", "Registros.RegistroId", "HistoriaClinica.RegistroId")
             .Where("HistoriaClinica.PacienteId", "=", pacienteid);
 
-                var result = query.Get<HistoriaClinicaResponseDto>();
-
-                if (result.Count()==0)
-                {
-                    query= db.Query("HistoriaClinica")
-                    .SelectRaw(@"
-                    HistoriaClinica.HistoriaClinicaId,                    
-                    HistoriaClinica.PacienteId,
-                    Registro.MotivoConsulta,
-                    Registro.Diagnostico,
-                    Registro.ProximaRevision,
-                    Registro.FechaRegistro")
-                    .Join("Registro", "HistoriaClinica.HistoriaClinicaId", "Registro.HistoriaClinicaId", "=", "inner join")
-                    .Where("HistoriaClinica.PacienteId", "=", pacienteid);
-                    result = query.Get<HistoriaClinicaResponseDto>();
-                    return result.ToList();
-                }
-               
-                return result.ToList();         
-            }
-            else {
-
-                var query = db.Query("HistoriaClinica")
-            .SelectRaw(@"
-                HistoriaClinica.HistoriaClinicaId,
-                HistoriaClinica.PacienteId,
-                Receta.DescripcionReceta,
-                Registro.MotivoConsulta,
-                Analisis.DescripcionAnalisis,
-                Registro.Diagnostico,
-                Registro.ProximaRevision,
-                Registro.FechaRegistro
-                     ")
-            .Join("Registro", "HistoriaClinica.HistoriaClinicaId", "Registro.HistoriaClinicaId", "=", "inner join")
-            .Join("Receta", "Receta.RegistroId", "Registro.RegistroId", "=")
-            .Join("Analisis", "Analisis.RegistroId", "Registro.RegistroId", "=");
-             var result = query.Get<HistoriaClinicaResponseDto>();
-
-                return result.ToList();
-            }
-
+            var result = query.Get<HistoriaClinicaResponseDto>();
+            return result.ToList();         
+ 
         }
     }
 }

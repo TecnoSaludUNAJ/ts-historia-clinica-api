@@ -18,8 +18,8 @@ namespace TP_Template_API.Controllers
         }
 
         [HttpPost]
-        [Authorize]
-        public IActionResult Post(RegistroDto registro)
+        //[Authorize]
+        public IActionResult Post(RegistroDTO registro)
         {
             try
             {

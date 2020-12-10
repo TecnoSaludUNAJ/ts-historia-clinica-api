@@ -8,19 +8,13 @@ namespace TP_Domain.Entities
     {
         [Key]
         public int RegistroId { get; set; }
+        public int EspecialistaId { get; set; }
         public string MotivoConsulta { get; set; }
-        public string Diagnostico { get; set; }
         public DateTime ProximaRevision { get; set; }
         public DateTime FechaRegistro { get; set; }
-
-        public List<Receta> RecetaNavigator { get; set; }
-
-        public List<Analisis> AnalisisNavigator { get; set; }
-
-        public int EspecialistaId { get; set; }
-
-        public HistoriaClinica HistoriaClinica { get; set; }
-        public int HistoriaClinicaId { get; set; }
+        public string Diagnostico { get; set; }
+        public string Analisis { get; set; }
+        public string Receta { get; set; }
 
     }
 }

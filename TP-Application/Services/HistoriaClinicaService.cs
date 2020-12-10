@@ -8,7 +8,6 @@ namespace TP_Application.Services
 {
     public interface IHistoriaClinicaService
     {
-        HistoriaClinicaResponseDto CreateHistoriaClinica(HistoriaClinicaDto historiaclinica);
        List<HistoriaClinicaResponseDto>  GetHistoriaClinica(int pacienteid);
 
     }
@@ -24,24 +23,9 @@ namespace TP_Application.Services
             _query = query;
         }
 
-        public HistoriaClinicaResponseDto CreateHistoriaClinica(HistoriaClinicaDto historiaclinica)
-        {
-            var entity = new HistoriaClinica
-            {
-                PacienteId = historiaclinica.PacienteId
-            };
-            _repository.Add<HistoriaClinica>(entity);
-
-            return new HistoriaClinicaResponseDto
-            {
-                HistoriaClinicaId = entity.HistoriaClinicaId,
-                PacienteId = entity.PacienteId
-            };
-        }
-
         public List<HistoriaClinicaResponseDto> GetHistoriaClinica(int pacienteid)
         {
-            return _query.Get(pacienteid);
+            return _query.GetByPacienteId(pacienteid);
         }
     }
 

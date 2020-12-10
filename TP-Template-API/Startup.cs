@@ -70,9 +70,7 @@ namespace TP_Template_API
 
             //Injection dependences
             services.AddTransient<IGenericsRepository, GenericsRepository>();
-            services.AddTransient<IAnalisisService, AnalisisService>();
             services.AddTransient<IRegistroService, RegistroService>();
-            services.AddTransient<IRecetaService, RecetaService>();
             services.AddTransient<IHistoriaClinicaService, HistoriaClinicaService>();
             services.AddTransient<IHistoriaClinicaQueries, HistoriaClinicaQueries>();
 

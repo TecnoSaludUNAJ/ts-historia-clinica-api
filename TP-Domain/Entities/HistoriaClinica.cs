@@ -7,11 +7,7 @@ namespace TP_Domain.Entities
     {
         [Key]
         public int HistoriaClinicaId { get; set; }
-
         public int PacienteId { get; set; }
-
-
-        public List<Registro> RegistroNavigator { get; set; }
-
+        public int RegistroId { get; set; }
     }
 }
